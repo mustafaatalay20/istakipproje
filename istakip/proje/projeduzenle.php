@@ -47,8 +47,10 @@ if(isset($_POST['proje_id'])){
                 </div>
                 <input type="hidden" name="proje_id" value="<?php echo $_POST['proje_id'] ?>">
                 <div class="form-row mt-2">
-                    <label>Proje Detayı</label>
-                    <textarea name="proje_detay" class="form-control"><?php echo $projecek['proje_detay'] ?></textarea>
+                    <div class="col-md-12">
+                         <label>Proje Detayı</label>
+                         <textarea name="proje_detay" class="form-control" id="projedetay"><?php echo $projecek['proje_detay'] ?></textarea>
+                    </div>
                 </div>
                 <button name="projeduzenle" type="submit" class="btn btn-primary mt-2">Kaydet</button>
             </form>
@@ -57,3 +59,11 @@ if(isset($_POST['proje_id'])){
 </div>
 
 <?php include 'footer.php' ?>
+
+
+
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+
+<script>
+CKEDITOR.replace('projedetay');
+</script>

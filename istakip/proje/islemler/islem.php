@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php 
 
 include 'baglan.php';
@@ -53,12 +54,11 @@ if(isset($_POST['projeekle'])){
         'durum'=>$_POST['proje_durum'],
         'detay'=>$_POST['proje_detay']
     ));
-
     if($projeekle){
-        header("location:../projeler.php");
-    }else{
-        echo "Kayıt İşlemi Başarısız";
-        exit;
+        echo "Başarılı";
+        header("Location:../projeler.php");
+        } else {
+
     }
 }
 
@@ -102,5 +102,52 @@ if(isset($_POST['projesilme'])){
         exit;
     }
 }
+if(isset($_POST['siparisekle'])){
+    $siparisekle=$db->prepare("INSERT INTO siparis SET 
+    musteri_adsoyad=:musteri_adsoyad,
+    musteri_mail=:musteri_mail,
+    musteri_telefon=:musteri_telefon,
+    siparis_baslik=:siparis_baslik,
+    siparis_durum=:siparis_durum,
+    siparis_ucret=:siparis_ucret,
+    siparis_teslim_tarihi=:siparis_teslim_tarihi,
+    siparis_aciliyet=:siparis_aciliyet,
+    siparis_detay=:siparis_detay");
+
+    $siparisekle->execute(array(
+        'musteri_adsoyad'=>$_POST['musteri_adsoyad'],
+        'musteri_mail'=>$_POST['musteri_mail'],
+        'musteri_telefon'=>$_POST['musteri_telefon'],
+        'siparis_baslik'=>$_POST['siparis_baslik'],
+        'siparis_durum'=>$_POST['siparis_durum'],
+        'siparis_ucret'=>$_POST['siparis_ucret'],
+        'siparis_teslim_tarihi'=>$_POST['siparis_teslim_tarihi'],
+        'siparis_aciliyet'=>$_POST['siparis_aciliyet'],
+        'siparis_detay'=>$_POST['siparis_detay']
+    ));
+
+
+    if($siparisekle){
+        header("location:../index.php");
+    }else{
+        echo "Kayıt İşlemi Başarısız";
+        exit;
+    }
+}
+
+if(isset($_POST['siparissilme'])){
+    $sil=$db->prepare("DELETE FROM siparis WHERE siparis_id=:siparis_id");
+    $kontrol=$sil->execute(array(
+        'siparis_id'=>$_POST['siparis_id']
+    ));
+
+    if($kontrol){
+        header("location:../siparisler.php");
+    }else{
+        echo "Silme İşlemi Başarısız";
+        exit;
+    }
+}
+
 
 ?>

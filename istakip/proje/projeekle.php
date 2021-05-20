@@ -1,4 +1,12 @@
-<?php include 'header.php' ?>
+<?php include 'header.php' ;?>
+
+<link rel="stylesheet" media="all" type="text/css" href="vendor/upload/css/fileinput.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="vendor/upload/themes/explorer-fas/theme.min.css">
+<script src="vendor/upload/js/fileinput.js" type="text/javascript" charset="utf-8"></script>
+<script src="vendor/upload/themes/explorer-fas/theme.minn.js" type="text/javascript" charset="utf-8"></script>
+<script src="vendor/upload/themes/fas/theme.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -35,12 +43,26 @@
                     </div>
                 </div>
                 <div class="form-row mt-2">
-                    <label>Proje Detayı</label>
-                    <textarea name="proje_detay" class="form-control"></textarea>
+                   <div class="col-md-12">
+                        <label>Proje Detayı</label>
+                        <textarea name="proje_detay" class="form-control" id="projedetay"></textarea>
+                   </div>
                 </div>
-                <button name="projeekle" type="submit" class="btn btn-primary mt-2">Kaydet</button>
+                <button name="projeekle" id="projeekle" type="submit" class="btn btn-primary mt-2">Kaydet</button>
             </form>
         </div>
     </div>
 </div>
-<?php include 'footer.php' ?>
+<?php include 'footer.php' ; ?>
+
+
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+
+<script>
+CKEDITOR.replace('projedetay');
+</script>
+
+
+<script type="text/javascript">
+
+</script>
